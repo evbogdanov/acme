@@ -1,0 +1,3 @@
+erl +pc unicode
+
+io:setopts([{encoding, utf8}]).

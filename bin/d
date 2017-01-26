@@ -1,0 +1,5 @@
+#!/usr/bin/env perl
+
+open FH, "| 9p write acme/$ENV{winid}/addr";
+print FH ",";
+system "9p write acme/$ENV{winid}/data </dev/null";

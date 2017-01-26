@@ -1,0 +1,32 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use feature 'say';
+use utf8;
+use open qw(:std :utf8);
+
+my $symbol = '#';
+my $line   = readline(STDIN) // '';
+chomp($line);
+
+## add more comment symbols?
+## now supported:
+## '#' -- default for bash, perl, ...
+## '%' -- erlang
+## '/' -- js, c, ...
+## ';' -- lisp
+if (
+	$line =~ m{
+		^([#%/;]) # line starts with comment symbol
+		\1*       # symbol can be repeated
+		\s        # first space separates symbol from content
+		(.+)$     # heading content
+	}x
+) {
+	$symbol = $1;
+	$line   = $2;
+}
+
+say $symbol x 2, ' ', uc $line;
+print $symbol x 2, ' ', '-' x 77;

@@ -1,0 +1,21 @@
+#!/usr/bin/env perl
+
+## VERY NICE: USE `g+` IN COMBO WITH MOUSE CHORD
+## -----------------------------------------------------------------------------
+
+## To search for literal text in the current directory:
+##   1. point at text with button 1 in any window
+##   2. release button 1
+##   3. execute `g+`, clicking button 1 while 2 is held down
+
+use strict;
+use warnings;
+use Cwd;
+
+die "don't know what to grep" unless @ARGV;
+
+my $what   = join ' ', @ARGV;
+my $cwd    = getcwd();
+my $result = `grep -nR '$what' $cwd`;
+
+print $result;

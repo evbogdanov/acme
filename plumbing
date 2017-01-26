@@ -1,0 +1,22 @@
+## MUSIC GO TO AFPLAY
+## -----------------------------------------------------------------------------
+
+## mac only
+## todo: rewrite for freebsd / linux
+
+kind is text
+data matches '[a-zA-Z¡-￿0-9_\-./]+'
+data matches '([a-zA-Z¡-￿0-9_\-./]+)\.(mp3|mp4|mpeg)'
+data isfile     $0
+plumb start afplay $file
+
+## PERL ERROR MESSAGES GO TO ACME
+## -----------------------------------------------------------------------------
+
+type is text
+data matches '([a-zA-Z¡-￿0-9_\-.]+\.p[l|m])( line )([0-9]+)?'
+arg isfile	$1
+data set	$file
+attr add	addr=$3
+plumb to edit
+plumb client window $editor

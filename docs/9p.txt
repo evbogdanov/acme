@@ -1,0 +1,40 @@
+
+# write works:
+echo очешуеть | 9p write acme/2/body
+
+# read works:
+9p read acme/2/body
+...
+очешуеть
+
+# ls
+9p ls acme
+9p ls plumb
+
+# read current windows:
+9p read acme/index
+
+# read default rules
+9p read plumb/rules
+
+// // //
+
+# write window body with $winid == 2 into another window
+Edit , < 9p read acme/2/body
+
+# close window with $winid == 3
+echo del | 9p write acme/3/ctl
+
+// // //
+
+touch /Users/ev/Desktop/wtf2.txt
+
+echo opanki >> /Users/ev/Desktop/wtf2.txt 
+
+echo 'name /Users/ev/Desktop/wtf2.txt' | 9p write acme/2/ctl
+echo clean | 9p write acme/2/ctl
+echo get | 9p write acme/2/ctl
+
+// // //
+
+echo 'текст в новом окне' | 9p write acme/new/body

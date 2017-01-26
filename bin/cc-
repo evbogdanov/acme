@@ -1,0 +1,7 @@
+#!/usr/bin/env perl
+
+while (<STDIN>) {
+	s/([A-Z]+)([A-Z][a-z])/$1_$2/g;
+	s/([a-z\d])([A-Z])/$1_$2/g;
+	print lc;
+}

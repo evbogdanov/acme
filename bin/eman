@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ $# -ne 1 ]
+then
+	echo 'gimme erlang module, pls'
+	exit 1
+fi
+
+erl -man "$1" | nobs+

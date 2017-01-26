@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+	perl -C -Mutf8 -lanE "$1"
+
+elif [[ $# -eq 2 ]]; then
+	if [[ -f "$2" ]]; then
+		perl -C -Mutf8 -lanE "$1" "$2"
+	else
+		perl -C -Mutf8 -F''"$1"'' -lanE "$2"
+	fi
+
+elif [[ $# -eq 3 && -f "$3" ]]; then
+	perl -C -Mutf8 -F''"$1"'' -lanE "$2" "$3"
+fi

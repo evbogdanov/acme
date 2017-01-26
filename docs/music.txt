@@ -1,0 +1,13 @@
+1. window:
+/path/to/legally/purchased/music
+
+2. add tag:
+## play 10 seconds
+afplay -t 10
+
+## play full song
+afplay
+
+3. L-select song
+
+4. M-hold + L-click

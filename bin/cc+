@@ -1,0 +1,5 @@
+#!/usr/bin/env perl
+
+while (<STDIN>) {
+	print join "", map { ucfirst $_ } (split "_", $_);
+}

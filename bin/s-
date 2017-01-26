@@ -1,0 +1,10 @@
+#!/usr/bin/env perl
+
+while (<>) {
+	if ($_ =~ m/^\s+$/) {
+		print "\n";
+	} else {
+		$_ =~ s/^\s+//;
+		print $_;
+	}
+}

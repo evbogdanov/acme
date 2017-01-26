@@ -1,0 +1,38 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use utf8;
+use open qw(:std :utf8);
+
+my ($d) = @ARGV;
+$d = "=>" unless $d;
+
+my $max = 0;
+my @ls = ();
+my @rs = ();
+my $i = 1;
+my $t = "";
+
+while (<STDIN>) {
+	if ($i == 1) {
+		$t = $1 if /^(\s+)/;
+		$i += 1;
+	}
+	$_ =~ s/^\s+|\s+$//g;
+	my @ls_rs = split $d, $_, 2;
+	my $len = length $ls_rs[0];
+	$max = $len if $len > $max;
+	push @ls, $ls_rs[0];
+	push @rs, $ls_rs[1];
+}
+
+for (my $i = 0; $i < @ls; $i += 1) {
+	my $l = $ls[$i]; 
+	my $r = $rs[$i];
+	my $n = $max - length $l;
+	my $s = " " x $n;
+	$l .= $s;
+	print $t, $l, $d, $r;
+	print "\n" unless $i + 1 == @ls;
+}

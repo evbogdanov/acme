@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+export SHELL="$PLAN9/bin/rc"
+export acmeshell="$PLAN9/bin/rc"
+export BROWSER=safari
+export tabstop=4
+export TERM=dumb
+export PAGER=nobs
+
+if [ "$(pgrep plumber)" ]; then
+	echo plumber is running
+else
+	echo starting plumber
+	plumber
+	cat "$HOME/acme/plumbing" "$PLAN9/plumb/basic" | 9p write plumb/rules
+fi
+
+acme -a -f /mnt/font/Menlo-Regular/12a/font $1

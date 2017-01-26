@@ -1,0 +1,72 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+## USAGE
+## -----------------------------------------------------------------------------
+
+## firefox:
+##     put+ ff
+## chrome:
+##     put+ ch
+## safari:
+##     put+ sa
+
+## DATA
+## -----------------------------------------------------------------------------
+
+use constant FIREFOX => 'ff';
+use constant CHROME  => 'ch';
+use constant SAFARI  => 'sa';
+
+my $browser = $ARGV[0] || CHROME;
+my $osascript;
+
+## ACME 'Put'
+## -----------------------------------------------------------------------------
+
+open my $fh, "| 9p write acme/$ENV{winid}/ctl";
+print $fh "put\n";
+close $fh;
+
+## FIREFOX SCRIPT (SADLY, IT'S FULL OF BUGS)
+## -----------------------------------------------------------------------------
+
+if ($browser eq FIREFOX) {
+	$osascript = 'tell application "Firefox"
+		activate
+		delay 2
+		tell application "System Events"
+			keystroke "r" using command down
+		end tell
+	end tell';
+}
+
+## CHROME SCRIPT
+## -----------------------------------------------------------------------------
+
+if ($browser eq CHROME) {
+	## wait for server update
+	sleep 2;
+
+	$osascript = 'tell application "Google Chrome" to reload active tab of window 1';
+}
+
+## SAFARI SCRIPT
+## -----------------------------------------------------------------------------
+
+if ($browser eq SAFARI) {
+	## also wait for server update
+	sleep 2;
+
+	$osascript = 'tell application "Safari"
+		set docUrl to URL of document 1
+		set URL of document 1 to docUrl
+	end tell';
+}
+
+## RUN SCRIPT
+## -----------------------------------------------------------------------------
+
+system "osascript -e '$osascript'";

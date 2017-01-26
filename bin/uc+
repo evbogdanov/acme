@@ -1,0 +1,8 @@
+#!/usr/bin/env perl
+
+use utf8;
+use open qw(:std :utf8);
+
+while (<>) {
+	print uc $_;
+}

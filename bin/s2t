@@ -1,0 +1,19 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+my $N_SPACES = $ARGV[0] || 4;
+
+while (my $line = <STDIN>) {
+	# Skip empty lines
+	print "\n" and next if $line !~ m/\S/;
+
+	$line =~ m/^(\s*)(.+)$/;
+	my $n_spaces = length($1);
+	my $n_tabs   = ($n_spaces > 0 and $n_spaces < $N_SPACES)
+		? 1
+		: int($n_spaces / $N_SPACES);
+
+	print "\t" x $n_tabs . "$2\n";
+}

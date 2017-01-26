@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+
+# default: 1 symbol comment: #, %
+# need ARGV for comments like this: //
+
+my ($symbol) = @ARGV;
+
+my $offset = $symbol ? length $symbol : 1;
+
+while (<STDIN>) {
+	print substr $_, $offset;
+}

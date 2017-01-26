@@ -1,0 +1,10 @@
+#!/usr/bin/env perl
+
+my ($symbol) = @ARGV;
+
+# default: | c+ '#'
+$symbol = '#' unless $symbol;
+
+while (<STDIN>) {
+	print "$symbol$_";
+}
