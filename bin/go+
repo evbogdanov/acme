@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+cat << 'GO'
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+}
+GO

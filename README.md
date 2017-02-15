@@ -93,6 +93,7 @@ Who is who in **bin** directory:
 - `eman MODULE` shortcut for `erl -man MODULE` (displays the manual page for the Erlang module MODULE)
 - `g+ WHAT` recursively grep current directory
 - `git+ MESSAGE` git: commit and push to master
+- `go+` go snippet
 - `h+` transform line to heading
 - `hg+ MESSAGE` hg: commit and push to master
 - `html+` html boilerplate
