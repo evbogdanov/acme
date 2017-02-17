@@ -91,6 +91,7 @@ Who is who in **bin** directory:
 - `cc-` CamelCase to snake_case
 - `d` works like `Edit , d`
 - `eman MODULE` shortcut for `erl -man MODULE` (displays the manual page for the Erlang module MODULE)
+- `erun MODULE ARG1 ... ARGN` erlangish `go run`
 - `g+ WHAT` recursively grep current directory
 - `git+ MESSAGE` git: commit and push to master
 - `go+` go snippet

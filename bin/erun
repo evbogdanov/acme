@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+	echo 'Usage: erun mod.erl arg1 arg2 ...'
+	exit 1
+fi
+
+## FILE WITH SOURCE CODE
+## -----------------------------------------------------------------------------
+
+file="$1"
+if [ ! -f "$file" ]; then
+	echo 'File not found'
+	exit 1
+fi
+
+## ERLANG MODULE TO RUN
+## -----------------------------------------------------------------------------
+
+mod=$(echo $file | sed -e 's/.erl//')
+
+## ARGUMENTS TO PASS TO THE MODULE
+## -----------------------------------------------------------------------------
+
+shift
+args="$@"
+if [ ! "$args" ]; then
+	# Without arguments main/0 will be called. Force main/1
+	args="''"
+fi
+
+## COMPILE AND RUN
+## -----------------------------------------------------------------------------
+
+erlc $file
+
+if [ $? -ne 0 ]; then
+	exit 1
+fi
+
+# Module should implement main/1 function
+erl -noshell +pc unicode -run $mod main $args -s init stop
+
+## CLEAN UP
+## -----------------------------------------------------------------------------
+
+rm "$mod.beam"
