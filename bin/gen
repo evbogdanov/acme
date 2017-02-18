@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+want="$1"
+
+## HTML
+## -----------------------------------------------------------------------------
+
+if [ $want == 'html' ] || [ $want == '!' ]; then
+cat << 'HTML'
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	<!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+	<!-- <link rel="stylesheet"    href="index.css">    -->
+</head>
+<body>
+
+	<!-- <script src="index.js"></script> -->
+</body>
+</html>
+HTML
+fi
+
+## PERL
+## -----------------------------------------------------------------------------
+
+if [ $want == 'perl' ] || [ $want == 'pl' ]; then
+cat << 'PERL'
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use feature 'say';
+use experimental 'signatures';
+
+sub main () {
+
+}
+
+main();
+PERL
+fi
+
+## GO
+## -----------------------------------------------------------------------------
+
+if [ $want == 'go' ]; then
+cat << 'GO'
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+}
+GO
+fi

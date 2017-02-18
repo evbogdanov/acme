@@ -93,14 +93,12 @@ Who is who in **bin** directory:
 - `eman MODULE` shortcut for `erl -man MODULE` (displays the manual page for the Erlang module MODULE)
 - `erun MODULE ARG1 ... ARGN` erlangish `go run`
 - `g+ WHAT` recursively grep current directory
+- `gen WHAT` generate some code for me (html boilerplate, perl/go snippets, etc)
 - `git+ MESSAGE` git: commit and push to master
-- `go+` go snippet
 - `h+` transform line to heading
 - `hg+ MESSAGE` hg: commit and push to master
-- `html+` html boilerplate
 - `lc+` to lowercase
 - `nobs+` is taken from plan9 `nobs` (it removes all backspace characters and the characters that precede them)
-- `perl+` perl boilerplate (shebang, `use strict` etc)
 - `put+ BROWSER` regular `Put` plus reload active tab in browser: `ff` | `ch` | `sa`
 - `s-` remove leading whitespace
 - `s2t N_SPACES` spaces to tabs (default: 4 spaces to 1 tab)
