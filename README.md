@@ -147,6 +147,7 @@ Put these guys in your **$path**.
 - `Dump` write the state of acme to the file
 - `Load` restore from the dump
 - `Edit , > perl` pipe window body through perl interpreter (better than `perl -e ...`)
+- three-finger tap emulates middle click (macOS) 
 
 ## Sam commands
 
