@@ -2,7 +2,7 @@
 
 export SHELL="$PLAN9/bin/rc"
 export acmeshell="$PLAN9/bin/rc"
-export BROWSER=safari
+export BROWSER=firefox
 export tabstop=4
 export TERM=dumb
 export PAGER=nobs
