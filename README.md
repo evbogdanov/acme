@@ -169,6 +169,10 @@ Put these guys in your **$path**.
 - copy: `> sed '' > file.txt`
 - pipe selection to a file: `> awk '{ print(toupper($1)) }' | sort | nl > file.txt`
 
+## Games!
+
+- [Tic-tac-toe](https://github.com/evbogdanov/acme_tic_tac_toe)
+
 ## Other Plan9 goodies
 
 - `win` start shell in a new window
