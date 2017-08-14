@@ -7,12 +7,18 @@ export tabstop=4
 export TERM=dumb
 export PAGER=nobs
 
+# Path to 'a' script itself
+acme_bin_dir=$( cd $(dirname $0) && pwd )
+
+# Where are the plumber rules?
+acme_plumber_rules="$acme_bin_dir/../plumbing"
+
 if [ "$(pgrep plumber)" ]; then
 	echo plumber is running
 else
 	echo starting plumber
 	plumber
-	cat "$HOME/acme/plumbing" "$PLAN9/plumb/basic" | 9p write plumb/rules
+	cat "$acme_plumber_rules" "$PLAN9/plumb/basic" | 9p write plumb/rules
 fi
 
 acme -a -f /mnt/font/Menlo-Regular/12a/font $1
