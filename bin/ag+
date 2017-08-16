@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ ! "$(which ag)" ]; then
+	echo '+----------------------------------------------------+'
+	echo '| The Silver Searcher is not found. Go get it tiger! |'
+	echo '|                                                    |'
+	echo '| https://github.com/ggreer/the_silver_searcher      |'
+	echo '+----------------------------------------------------+'
+	exit 1
+fi
+
+ag --nocolor --noheading "$@"

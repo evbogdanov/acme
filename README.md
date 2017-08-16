@@ -82,9 +82,9 @@ I spawn Acme by running `a` script.
 Who is who in **bin** directory:
 
 - `a` start Acme
+- `ag+` search with The Silver Searcher
 - `c+ SYMBOL` comment selection (python: `|c+` or `|c+ '#'`, erlang: `|c+ %`, js: `|c+ //`)
 - `c- SYMBOL` uncomment selection
-- `g+ WHAT` recursively grep current directory
 - `git+ MESSAGE` git: commit and push to master
 - `h+` heading
 - `hg+ MESSAGE` hg: commit and push to master
