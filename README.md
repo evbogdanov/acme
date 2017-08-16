@@ -86,7 +86,7 @@ Who is who in **bin** directory:
 - `c+ SYMBOL` comment selection (python: `|c+` or `|c+ '#'`, erlang: `|c+ %`, js: `|c+ //`)
 - `c- SYMBOL` uncomment selection
 - `git+ MESSAGE` git: commit and push to master
-- `h+` heading
+- `h+ SYMBOL` draw a pretty heading
 - `hg+ MESSAGE` hg: commit and push to master
 - `lc+` to lowercase
 - `nobs+` taken from plan9 `nobs` (it removes all backspace characters and the characters that precede them)

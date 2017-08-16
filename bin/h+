@@ -1,32 +1,14 @@
-#!/usr/bin/env perl
+#!/usr/bin/env bash
 
-use strict;
-use warnings;
-use feature 'say';
-use utf8;
-use open qw(:std :utf8);
+symbols="$1"
 
-my $symbol = '#';
-my $line   = readline(STDIN) // '';
-chomp($line);
+symbol=${symbols:0:1}
 
-## add more comment symbols?
-## now supported:
-## '#' -- default for bash, perl, ...
-## '%' -- erlang
-## '/' -- js, c, ...
-## ';' -- lisp
-if (
-	$line =~ m{
-		^([#%/;]) # line starts with comment symbol
-		\1*       # symbol can be repeated
-		\s        # first space separates symbol from content
-		(.+)$     # heading content
-	}x
-) {
-	$symbol = $1;
-	$line   = $2;
-}
+if [ ! "$symbol" ]; then
+	symbol='#'
+fi
 
-say $symbol x 2, ' ', uc $line;
-print $symbol x 2, ' ', '-' x 77;
+line=$(sed 1q | uc+)
+
+echo "$symbol$symbol $line"
+echo "$symbol$symbol -----------------------------------------------------------------------------"
