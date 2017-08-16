@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+	echo 'What do you want to commit?'
+	exit 1
+fi
+
+if [ -d '.git' ]; then
+	git add -A
+	git commit -m ''"$*"''
+	git push -u origin master
+elif [ -d '.hg' ]; then
+	hg addremove
+	hg commit -m ''"$*"''
+	hg push
+else
+	echo 'No .git nor .hg directory found'
+fi
