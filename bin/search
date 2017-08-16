@@ -10,3 +10,7 @@ if [ ! "$(which ag)" ]; then
 fi
 
 ag --nocolor --noheading "$@"
+
+if [ $? -ne 0 ]; then
+	echo 'No results.'
+fi
