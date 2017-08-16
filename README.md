@@ -82,30 +82,22 @@ I spawn Acme by running `a` script.
 Who is who in **bin** directory:
 
 - `a` start Acme
-- `a+ SYMBOL` alignment (default is fat comma: `|a+ '=>'`, erlang proplist: `|a+ ' '`)
 - `c+ SYMBOL` add comment (python: `|c+` or `|c+ '#'`, erlang: `|c+ %`, js: `|c+ //`)
 - `c- SYMBOL` delete comment (python/erlang: `|c-`, js: `|c- //`)
-- `cc+` snake_case to CamelCase
-- `cc-` CamelCase to snake_case
-- `d` works like `Edit , d`
-- `eman MODULE` shortcut for `erl -man MODULE` (displays the manual page for the Erlang module MODULE)
-- `erun MODULE ARG1 ... ARGN` erlangish `go run`
 - `g+ WHAT` recursively grep current directory
 - `git+ MESSAGE` git: commit and push to master
-- `h+` transform line to heading
+- `h+` heading
 - `hg+ MESSAGE` hg: commit and push to master
 - `lc+` to lowercase
-- `nobs+` is taken from plan9 `nobs` (it removes all backspace characters and the characters that precede them)
-- `put+ BROWSER` regular `Put` plus reload active tab in browser: `ff` | `ch` | `sa`
+- `nobs+` taken from plan9 `nobs` (it removes all backspace characters and the characters that precede them)
 - `s-` remove leading whitespace
 - `s2t N_SPACES` spaces to tabs (default: 4 spaces to 1 tab)
 - `t2s N_SPACES` tabs to spaces (default: 1 tab to 4 spaces)
 - `t+` add tab
 - `t-` delete tab
 - `uc+` to uppercase
-- `w+ WIDTH` (hello, `fmt -w WIDTH`)
 
-Put these guys in your **$path**.
+Put these guys in your **$PATH**.
 
 ## Random notes
 
