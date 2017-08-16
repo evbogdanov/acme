@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# macOS (BSD) flavor of sed
+sed -E 's/^[[:space:]]+//'

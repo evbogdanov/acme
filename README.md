@@ -88,8 +88,8 @@ Who is who in **bin** directory:
 - `h+ SYMBOL` draw a pretty heading
 - `hg+ MESSAGE` hg: commit and push to master
 - `lower` convert selection to lowercase
+- `lstrip` remove leading whitespace
 - `search` search with The Silver Searcher
-- `s-` remove leading whitespace
 - `s2t N_SPACES` spaces to tabs (default: 4 spaces to 1 tab)
 - `t2s N_SPACES` tabs to spaces (default: 1 tab to 4 spaces)
 - `t+` add tab
