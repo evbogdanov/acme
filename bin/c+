@@ -1,10 +1,9 @@
-#!/usr/bin/env perl
+#!/usr/bin/env bash
 
-my ($symbol) = @ARGV;
+symbol="$1"
 
-# default: | c+ '#'
-$symbol = '#' unless $symbol;
+if [ ! "$symbol" ]; then
+	symbol='#'
+fi
 
-while (<STDIN>) {
-	print "$symbol$_";
-}
+sed "s!^!$symbol!"
