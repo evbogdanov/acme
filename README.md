@@ -89,7 +89,6 @@ Who is who in **bin** directory:
 - `h+ SYMBOL` draw a pretty heading
 - `hg+ MESSAGE` hg: commit and push to master
 - `lower` convert selection to lowercase
-- `nobs+` taken from plan9 `nobs` (it removes all backspace characters and the characters that precede them)
 - `s-` remove leading whitespace
 - `s2t N_SPACES` spaces to tabs (default: 4 spaces to 1 tab)
 - `t2s N_SPACES` tabs to spaces (default: 1 tab to 4 spaces)
