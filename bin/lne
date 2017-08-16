@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-perl -C -Mutf8 -lnE "$@"

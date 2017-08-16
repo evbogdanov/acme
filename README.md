@@ -81,12 +81,10 @@ I spawn Acme by running `a` script.
 
 Who is who in **bin** directory:
 
-- `+ EXP` lisp-style polish notation calculator; example: `+ '(+ 1 2 3)'`
-- `F`, `lne`, `lpe`, `ne`, `pe` perl one-liners shortcuts
 - `a` start Acme
 - `a+ SYMBOL` alignment (default is fat comma: `|a+ '=>'`, erlang proplist: `|a+ ' '`)
-- `c+ SYMBOL` add comment (perl: `|c+` or `|c+ '#'`, erlang: `|c+ %`, js: `|c+ //`)
-- `c- SYMBOL` delete comment (perl/erlang: `|c-`, js: `|c- //`)
+- `c+ SYMBOL` add comment (python: `|c+` or `|c+ '#'`, erlang: `|c+ %`, js: `|c+ //`)
+- `c- SYMBOL` delete comment (python/erlang: `|c-`, js: `|c- //`)
 - `cc+` snake_case to CamelCase
 - `cc-` CamelCase to snake_case
 - `d` works like `Edit , d`
@@ -120,7 +118,7 @@ Put these guys in your **$path**.
 - `Edit , d` clear window
 - `Edit , < echo hello world` replace window body with some text
 - `Edit , < erl -man maps` replace window body with erlang manual
-- `Edit , s/text/TEXT/g` or `Edit , | perl -pe 's/text/TEXT/g'` global replace
+- `Edit , s/text/TEXT/g` or `Edit , | sed 's/text/TEXT/g'` global replace
 - `$%` or `$samfile` current file name
 - `$winid` current window id
 - `echo some text | 9p write acme/$winid/body` append to the end of current window
@@ -145,7 +143,7 @@ Put these guys in your **$path**.
 - `:/^b/,/^e/` regexp match: lines between starting with 'b' and starting with 'e'
 - `Dump` write the state of acme to the file
 - `Load` restore from the dump
-- `Edit , > perl` pipe window body through perl interpreter (better than `perl -e ...`)
+- `Edit , > python` pipe window body through python interpreter
 - three-finger tap emulates middle click (macOS) 
 
 ## Sam commands
