@@ -1,6 +1,3 @@
-#!/usr/bin/env perl
+#!/usr/bin/env bash
 
-while (<>) {
-	$_ =~ s/^\t//;
-	print $_;
-}
+sed 's/^	//'
