@@ -8,7 +8,7 @@ if [ ! "$symbol" ]; then
 	symbol='#'
 fi
 
-line=$(sed 1q | uc+)
+line=$(sed 1q | upper)
 
 echo "$symbol$symbol $line"
 echo "$symbol$symbol -----------------------------------------------------------------------------"

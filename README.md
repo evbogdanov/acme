@@ -88,14 +88,14 @@ Who is who in **bin** directory:
 - `git+ MESSAGE` git: commit and push to master
 - `h+ SYMBOL` draw a pretty heading
 - `hg+ MESSAGE` hg: commit and push to master
-- `lc+` to lowercase
+- `lower` convert selection to lowercase
 - `nobs+` taken from plan9 `nobs` (it removes all backspace characters and the characters that precede them)
 - `s-` remove leading whitespace
 - `s2t N_SPACES` spaces to tabs (default: 4 spaces to 1 tab)
 - `t2s N_SPACES` tabs to spaces (default: 1 tab to 4 spaces)
 - `t+` add tab
 - `t-` delete tab
-- `uc+` to uppercase
+- `upper` convert selection to uppercase
 
 Put these guys in your **$PATH**.
 
@@ -145,7 +145,7 @@ Put these guys in your **$PATH**.
 - `Edit , > wc -l` count lines in file
 - `Edit , | sort` sort lines
 - `Edit 3,5p` print lines 3..5 in new window
-- `Edit 3,5 |uc+` lines 3..5 upper cased
+- `Edit 3,5 |upper` lines 3..5 upper cased
 - `Edit 3,5 s/HE/he/g` replace on 3..5 lines only 
 - `Edit 2 d` delete second line
 - `Edit 2 a/new\n/` append text after 2nd line
