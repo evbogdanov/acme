@@ -1,19 +1,30 @@
-#!/usr/bin/env perl
+#!/usr/bin/env python3
 
-use strict;
-use warnings;
+import sys
 
-my $N_SPACES = $ARGV[0] || 4;
+DEFAULT_N_SPACES = 4
+TAB, SPACE = '	', ' '
 
-while (my $line = <STDIN>) {
-	# Skip empty lines
-	print "\n" and next if $line !~ m/\S/;
+try:
+    n_spaces = int(sys.argv[1])
+except:
+    n_spaces = DEFAULT_N_SPACES
 
-	$line =~ m/^(\s*)(.+)$/;
-	my $n_spaces = length($1);
-	my $n_tabs   = ($n_spaces > 0 and $n_spaces < $N_SPACES)
-		? 1
-		: int($n_spaces / $N_SPACES);
+if n_spaces < 1:
+    n_spaces = DEFAULT_N_SPACES
 
-	print "\t" x $n_tabs . "$2\n";
-}
+for line in sys.stdin:
+    line = line.rstrip()
+    n_leading_spaces = 0
+
+    for ch in line:
+        if ch != SPACE:
+            break
+        n_leading_spaces += 1
+
+    if 0 < n_leading_spaces < n_spaces:
+        n_tabs = 1
+    else:
+        n_tabs = n_leading_spaces // n_spaces
+
+    print(TAB * n_tabs, line[n_leading_spaces:], sep='')

@@ -1,42 +1,26 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-n_spaces="$1"
+import sys
 
-if [ ! "$n_spaces" ]; then
-	n_spaces=4
-fi
+DEFAULT_N_SPACES = 4
+TAB, SPACE = '	', ' '
 
-if [ $n_spaces -lt 1 ]; then
-	echo 'Sorry. Number of spaces should be a positive number'
-	exit 1
-fi
+try:
+    n_spaces = int(sys.argv[1])
+except:
+    n_spaces = DEFAULT_N_SPACES
 
-space=''
-i=0
-while [ true ]; do
-	space="$space "
-	i=$(( $i + 1 ))
-	if [ $i -eq $n_spaces ]; then
-		break
-	fi
-done
+if n_spaces < 1:
+    n_spaces = DEFAULT_N_SPACES
 
-while IFS='' read -r line || [[ -n "$line" ]]; do
-	if [[ ${line:0:1} != '	' ]]; then
-		echo "$line"
-		continue
-	fi
+for line in sys.stdin:
+    line = line.rstrip()
+    n_tabs = 0
 
-	# Line length
-	line_len=${#line}
+    for ch in line:
+        if ch != TAB:
+            break
+        n_tabs += 1
 
-	# Get leading tabs and their length
-	tabs=$(echo "$line" | sed -n 's/^\(	*\)\(.*\)$/\1/p')
-	tabs_len=${#tabs}
-
-	line_without_tabs_len=$(( $line_len - $tabs_len ))
-	line_without_tabs=${line:$tabs_len:$line_without_tabs_len}
-
-	spaces=$(echo "$tabs" | sed "s/	/$space/g")
-	echo "$spaces$line_without_tabs"
-done
+    spaces = SPACE * n_spaces * n_tabs
+    print(spaces, line[n_tabs:], sep='')
