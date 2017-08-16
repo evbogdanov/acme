@@ -1,36 +1,10 @@
-#!/usr/bin/env perl
+#!/usr/bin/env bash
 
-use strict;
-use warnings;
-use Cwd;
+if [ $# -eq 0 ]; then
+	echo 'Where is my commit message, huh?'
+	exit 1
+fi
 
-die 'please enter commit message' unless @ARGV;
-
-my $msg = join ' ', @ARGV;
-
-my $dir = getcwd();
-
-system "hg --cwd $dir addremove";
-system "hg --cwd $dir commit -m '$msg'";
-system "hg --cwd $dir push";
-
-my $hgrc = "$dir/.hg/hgrc";
-
-open my $fh, '<', $hgrc
-	or die "cannot open $hgrc: $!\n";
-
-my $repository;
-
-while (my $line = readline($fh)) {
-	if ($line =~ m/^bb\.prefix = (.+)$/) {
-		$repository = $1;
-		last;
-	}
-}
-
-close $fh;
-
-if ($repository) {
-	print "\nview commits:\n";
-	print "$repository/commits/all\n";
-}
+hg addremove
+hg commit -m ''"$*"''
+hg push

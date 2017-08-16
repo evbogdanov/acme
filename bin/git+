@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-if [ $# -eq 0 ]
-then
-	echo where is my commit message, bro?
+if [ $# -eq 0 ]; then
+	echo 'Where is my commit message, bro?'
 	exit 1
 fi
 
