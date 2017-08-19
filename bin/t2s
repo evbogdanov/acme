@@ -1,26 +1,42 @@
-#!/usr/bin/env python3
+#!/usr/bin/env bash
 
-import sys
+awk -v n_spaces="$1" '
 
-DEFAULT_N_SPACES = 4
-TAB, SPACE = '	', ' '
+BEGIN {
+	tab = "	"
+	space = " "
 
-try:
-    n_spaces = int(sys.argv[1])
-except:
-    n_spaces = DEFAULT_N_SPACES
+	if (n_spaces < 1) {
+		n_spaces = 4
+	}
 
-if n_spaces < 1:
-    n_spaces = DEFAULT_N_SPACES
+	spaces_per_tab = ""
+	for (i = 1; i <= n_spaces; i += 1) {
+		spaces_per_tab = spaces_per_tab space
+	}
+}
 
-for line in sys.stdin:
-    line = line.rstrip()
-    n_tabs = 0
+function spaces_for_n_tabs(n) {
+	spaces = ""
+	while (n--) {
+		spaces = spaces spaces_per_tab
+	}
+	return spaces
+}
 
-    for ch in line:
-        if ch != TAB:
-            break
-        n_tabs += 1
+function tabs_to_spaces(line) {
+	n_tabs = 0
+	for (i = 1; i <= length(line); i += 1) {
+		if (substr(line, i, 1) != tab) {
+			break
+		}
+		n_tabs += 1
+	}
+	return spaces_for_n_tabs(n_tabs) substr(line, i)
+}
 
-    spaces = SPACE * n_spaces * n_tabs
-    print(spaces, line[n_tabs:], sep='')
+{
+	print tabs_to_spaces($0)
+}
+
+'
