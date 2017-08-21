@@ -18,14 +18,11 @@ The killer feature of Acme is how it integrates into surrounding system. Acme is
 
 ## Install
 
-### FreeBSD
-```
-pkg install plan9port
-```
-
 ### macOS
 ```
-brew install plan9port
+mkdir $HOME/9 && cd $HOME/9
+git clone https://github.com/9fans/plan9port/ && cd plan9port
+./INSTALL
 ```
 
 ### Debian
@@ -38,16 +35,9 @@ cd $HOME/plan9/plan9port
 
 ## Environment setup 
 
-### Bash
 ```
 export PLAN9="/path/to/plan9port"
 export PATH="$PATH:$PLAN9/bin"
-```
-
-### Tcsh
-```
-setenv PLAN9 /path/to/plan9port
-set path = ($path $PLAN9/bin)
 ```
 
 ## Font
