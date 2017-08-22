@@ -108,9 +108,10 @@ Put these guys in your **$PATH**.
   - `ctrl-j` enter
   - `ctrl-f` filepath autocompletion
   - `fn-*left arrow*` go home (macOS)
-  - `fn-*right arrow*` go end (macOS) 
-- `:foobar` search forward
-- `:-/foobar` search backwards
+  - `fn-*right arrow*` go end (macOS)
+- search with right click:
+  - `:+/foobar`, `:/foobar` and just `foobar` search forward
+  - `:-/foobar` search backwards
 - press `esc` to select the last typed text
 - press `esc` again to delete any selected text
 - `Font` switch between fonts
