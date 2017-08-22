@@ -89,8 +89,8 @@ Put these guys in your **$PATH**.
 - `:13` goto 13th line
 - `:0` goto file beginning
 - `:$` goto file end
-- `:0,$` or `:,` or `Edit ,` select the whole file
-- `:1,5` select lines 1..5
+- `:1,$` or `:,` or `Edit 1,$` or `Edit ,` select all lines
+- `:1,5` or `Edit 1,5` select lines 1..5
 - `Edit , d` clear window
 - `Edit , < echo hello world` replace window body with some text
 - `Edit , < erl -man maps` replace window body with erlang manual
@@ -125,16 +125,30 @@ Put these guys in your **$PATH**.
 
 ## Sam commands
 
-- `Edit +/hello/` search 'hello' forward
-- `Edit -/hello/` search 'hello' backward
+- `Edit +/hello` search 'hello' forward
+- `Edit -/hello` search 'hello' backward
 - `Edit , > wc -l` count lines in file
 - `Edit , | sort` sort lines
 - `Edit 3,5p` print lines 3..5 in new window
-- `Edit 3,5 |upper` lines 3..5 upper cased
+- `Edit 3,5 | upper` lines 3..5 upper cased
 - `Edit 3,5 s/HE/he/g` replace on 3..5 lines only 
-- `Edit 2 d` delete second line
-- `Edit 2 a/new\n/` append text after 2nd line
-- `Edit 2 i/new\n/` insert text before 2nd line
+- `Edit 2 d` delete 2nd line
+- `Edit 2 c/new` change 2nd line
+- `Edit 2 a/new` append text after 2nd line
+- `Edit 2 i/new` insert text before 2nd line
+- `Edit 2 < date` replace 2nd line with the output of date
+- `Edit ,x/^TODAY$/ < date` replace matching lines with the output of date
+- `Edit ,x/Plan9/ |tr a-z A-Z` replace all instances of Plan9 with upper case
+- `Edit 3,5x/^/ a/	/` indent lines 3..5 with 1 tab
+
+You can do amazing things with Sam commands:
+```
+Edit ,x/Acme/ {
+  i/I love 
+  c/Sam
+  a/ editor!
+}
+```
 
 ## Cut / Copy selection to a file
 
