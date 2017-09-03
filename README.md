@@ -159,7 +159,8 @@ Edit ,x/Acme/ {
 
 ## Games!
 
-- [Tic-tac-toe](https://github.com/evbogdanov/acme_tic_tac_toe)
+- [Tic-tac-toe](https://github.com/evbogdanov/acme-tic-tac-toe)
+- [Mini sea battle](https://github.com/evbogdanov/acme-mini-sea-battle)
 
 ## Other Plan9 goodies
 
