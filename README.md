@@ -77,6 +77,7 @@ Who is who in **bin** directory:
 - `hd SYMBOL` draw a pretty heading
 - `i`/`ui` indent/unindent selection
 - `lstrip` remove leading whitespace
+- `nobs` from Plan9
 - `search` search with The Silver Searcher
 - `t2s N_SPACES`/`s2t N_SPACES` tabs <=> spaces
 - `upper`/`lower` convert selection to uppercase/lowercase
