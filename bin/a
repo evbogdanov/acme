@@ -21,4 +21,7 @@ else
 	cat "$acme_plumber_rules" "$PLAN9/plumb/basic" | 9p write plumb/rules
 fi
 
+# In `win`, Node.js REPL looks nicer without ANSI codes
+export NODE_NO_READLINE=1
+
 acme -a -f /mnt/font/Menlo-Regular/12a/font $1
