@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+
+my $winid = $ENV{winid};
+
+system "echo addr=dot | 9p write acme/$winid/ctl";
+
+system qq(bash -c 'echo -n "__MARKER__"' | 9p write acme/$winid/data);
+
+system qq(bash -c "echo -n '/^.*__MARKER__/'" | 9p write acme/$winid/addr);
+
+my $data = `9p read acme/$winid/data`;
+
+my ($line) = $data =~ /^(.*) b__MARKER__/;
+
+my ($whitespace) = $line =~ /^(\s*)/;
+
+$line = "$line {\n$whitespace\t\n$whitespace}";
+
+system qq(bash -c "echo -n '/^.*__MARKER__/'" | 9p write acme/$winid/addr);
+system qq(bash -c "echo -n '$line'" | 9p write acme/$winid/data);
