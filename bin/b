@@ -1,20 +1,22 @@
-#!/usr/bin/env perl
+#!/usr/bin/env bash
 
-my $winid = $ENV{winid};
+# Select `b` (or before it, or after) and assign Acme `addr` to selection
+echo addr=dot | 9p write acme/$winid/ctl
 
-system "echo addr=dot | 9p write acme/$winid/ctl";
+# Mark the current line and change `addr` to it
+echo -n '__MARKER__' | 9p write acme/$winid/data
+echo -n '/^.*__MARKER__/' | 9p write acme/$winid/addr
 
-system qq(bash -c 'echo -n "__MARKER__"' | 9p write acme/$winid/data);
+# Process the line
+line=$(9p read acme/$winid/data | sed 1q)
+indentation=$(echo "$line" | sed -E 's/^(	*).*$/\1/')
+before_marker=$(echo "$line" | sed -E 's/b?__MARKER__.*$/{/')
+after_marker=$(echo "$line" | awk -F'__MARKER__' '{print $2}')
+[ "$after_marker" == "b" ] && after_marker=""
 
-system qq(bash -c "echo -n '/^.*__MARKER__/'" | 9p write acme/$winid/addr);
+# Compose the final block
+block="$before_marker"$'\n'"$indentation	"$'\n'"$indentation}$after_marker"
 
-my $data = `9p read acme/$winid/data`;
-
-my ($line) = $data =~ /^(.*) b__MARKER__/;
-
-my ($whitespace) = $line =~ /^(\s*)/;
-
-$line = "$line {\n$whitespace\t\n$whitespace}";
-
-system qq(bash -c "echo -n '/^.*__MARKER__/'" | 9p write acme/$winid/addr);
-system qq(bash -c "echo -n '$line'" | 9p write acme/$winid/data);
+# Change `addr` one more time and replace original line with my block
+echo -n '/^.*__MARKER__.*\n?/' | 9p write acme/$winid/addr
+echo "$block" | 9p write acme/$winid/data

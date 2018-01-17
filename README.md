@@ -72,12 +72,12 @@ I spawn Acme by running `a` script.
 Who is who in **bin** directory:
 
 - `a` start Acme
+- `b` create an indented C-like block `{ ... }`
 - `c SYMBOL`/`uc SYMBOL` comment/uncomment selection
 - `commit MESSAGE` commit and push to master
 - `hd SYMBOL` draw a pretty heading
 - `i`/`ui` indent/unindent selection
 - `lstrip` remove leading whitespace
-- `nobs` from Plan9
 - `search` search with The Silver Searcher
 - `t2s N_SPACES`/`s2t N_SPACES` tabs <=> spaces
 - `upper`/`lower` convert selection to uppercase/lowercase
