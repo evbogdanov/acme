@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+print_80_symbols () {
+	for i in {1..80}
+		do
+			printf "$1"
+		done
+	echo ''
+}
+
 symbols="$1"
 
 symbol=${symbols:0:1}
@@ -8,7 +16,8 @@ if [ ! "$symbol" ]; then
 	symbol='#'
 fi
 
-line=$(sed 1q | upper)
+read line
 
-echo "$symbol$symbol $line"
-echo "$symbol$symbol -----------------------------------------------------------------------------"
+print_80_symbols "$symbol"
+echo "$symbol$symbol$symbol $line"
+print_80_symbols "$symbol"
