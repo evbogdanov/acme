@@ -75,10 +75,10 @@ Who is who in **bin** directory:
 - `b` create an indented C-like block `{ ... }`
 - `c SYMBOL`/`uc SYMBOL` comment/uncomment selection
 - `commit MESSAGE` commit and push to master
+- `f TEXT` find TEXT using The Silver Searcher
 - `hd SYMBOL` draw a pretty heading
 - `i`/`ui` indent/unindent selection
 - `lstrip` remove leading whitespace
-- `s` search with The Silver Searcher
 - `t2s N_SPACES`/`s2t N_SPACES` tabs <=> spaces
 - `upper`/`lower` convert selection to uppercase/lowercase
 

@@ -12,5 +12,5 @@ fi
 ag --nocolor --noheading "$@"
 
 if [ $? -ne 0 ]; then
-	echo 'No results.'
+	echo 'Not found'
 fi
