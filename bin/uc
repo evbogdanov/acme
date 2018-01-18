@@ -6,4 +6,4 @@ if [ ! "$symbol" ]; then
 	symbol='#'
 fi
 
-sed "s!^\($symbol\)*!!"
+sed "s!^$symbol*!!"
