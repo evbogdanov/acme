@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+
+perl -ne '
+BEGIN {
+	my @SELF_CLOSING_TAGS = qw(
+		area
+		base
+		br
+		col
+		command
+		embed
+		hr
+		img
+		input
+		keygen
+		link
+		meta
+		param
+		source
+		track
+		wbr
+	);
+
+	my %ALIASES = (
+		bu => "button",
+		te => "textarea",
+		in => "input",
+		## TODO: more (and better!) aliases
+	);
+
+	my %ATTRS = (
+		a => [ ["href", "#"] ],
+		img => ["src", "alt"],
+		input => [ ["type", "text"] ],
+		link => ["rel", "href"],
+		option => ["value"],
+		## TODO: moar attributes
+	);
+
+	sub is_self_closing_tag {
+		my $tag = shift;
+		for my $t (@SELF_CLOSING_TAGS) {
+			return 1 if $tag eq $t;
+		}
+		return 0;
+	}
+
+	sub get_tag {
+		my $input = shift;
+		my ($tag) = $input =~ /^([a-z-]+)/i;
+		return "div" unless $tag;
+		if (my $alias = $ALIASES{$tag}) {
+			return $alias;
+		}
+		return $tag;
+	}
+
+	sub get_classes {
+		my $input = shift;
+		my ($classes_str) = $input =~ /^[a-z-]*\.([a-z0-9-_.]*)/i;
+		return split /\./, $classes_str;
+	}
+
+	sub get_content {
+		my $input = shift;
+		my ($content_type, $content) = $input =~ /([ >])(.*)/;
+		if ($content_type =~ /^>/) {
+			## Nested elements
+			$content = process_input($content);
+		}
+		return $content;
+	}
+
+	sub build_attributes {
+		my $tag = shift;
+		my $attr = "";
+		if (my $attrs = $ATTRS{$tag}) {
+			for my $a (@$attrs) {
+				if (ref $a eq "ARRAY") {
+					my ($k, $v) = ($a->[0], $a->[1]);
+					$attr .= qq( $k="$v");
+				}
+				else {
+					$attr .= qq( $a="");
+				}
+			}
+		}
+		return $attr;
+	}
+
+	sub build_element {
+		my ($tag, $content, @classes) = @_;
+	
+		my $cls = "";
+		if (@classes) {
+			$cls = join " ", @classes;
+			$cls = qq( class="$cls");
+		}
+
+		my $attr = build_attributes $tag;
+		my $tag_beg = "<$tag$cls$attr";
+		my $tag_end = (is_self_closing_tag $tag)
+			? "/>" # Acme does not like self-closing tags without "/"
+			: ">$content</$tag>";
+		return "$tag_beg$tag_end";
+	}
+
+	sub build_html {
+		return q(<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>);
+	}
+
+	sub process_input {
+		my $input = shift;
+		my $newline = "";
+		if ($input =~ /\n/) {
+			$newline = "\n";
+		}
+		chomp $input;
+
+		my ($whitespace) = $input =~ /^(\s*)/;
+		$input =~ s/^\s*//;
+
+		my $output;
+		if ($input eq "!") {
+			$output = build_html;
+		}
+		else {
+			my $tag = get_tag $input;
+			my $content = get_content $input;
+			my @classes = get_classes $input;
+			$output = build_element $tag, $content, @classes;
+		}
+		return "$whitespace$output$newline";
+	}
+}
+print process_input $_;
+' "$@"
