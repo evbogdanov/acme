@@ -77,6 +77,8 @@ Who is who in **bin** directory:
 - `commit MESSAGE` commit and push to master
 - `f TEXT` find TEXT using The Silver Searcher
 - `hd SYMBOL` draw a pretty heading
+- `htm` feed selection to [Pug](https://github.com/pugjs/pug)
+- `html` HTML boilerplate
 - `i`/`ui` indent/unindent selection
 - `lstrip` remove leading whitespace
 - `t2s N_SPACES`/`s2t N_SPACES` tabs <=> spaces

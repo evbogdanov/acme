@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo addr=dot | 9p write acme/$winid/ctl
+data=$(9p read acme/$winid/xdata)
+
+indentation=$(echo "$data" | sed 1q | sed -E 's/^(	*).*$/\1/')
+html=$(echo "$data" | sed "s/^$indentation//" | pug --pretty | sed '/^$/d' | s2t 2 | sed "s/^/$indentation/")
+
+echo addr=dot | 9p write acme/$winid/ctl
+echo -n "$html" | 9p write acme/$winid/data

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+echo -n , | 9p write acme/$winid/addr
+#echo WORKS | 9p write acme/$winid/data
+
+9p write acme/$winid/data << HTML
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+HTML
