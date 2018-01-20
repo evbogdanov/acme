@@ -47,7 +47,7 @@ BEGIN {
 
 	sub get_tag {
 		my $input = shift;
-		my ($tag) = $input =~ /^([a-z-]+)/i;
+		my ($tag) = $input =~ /^([a-z0-9-]+)/i;
 		return "div" unless $tag;
 		if (my $alias = $ALIASES{$tag}) {
 			return $alias;
@@ -57,7 +57,7 @@ BEGIN {
 
 	sub get_classes {
 		my $input = shift;
-		my ($classes_str) = $input =~ /^[a-z-]*\.([a-z0-9-_.]*)/i;
+		my ($classes_str) = $input =~ /^[a-z0-9-]*\.([a-z0-9-_.]*)/i;
 		return split /\./, $classes_str;
 	}
 
