@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## This script is not ready for prime time yet...
+
 perl -ne '
 BEGIN {
 	my @SELF_CLOSING_TAGS = qw(
@@ -121,18 +123,15 @@ BEGIN {
 
 	sub process_input {
 		my $input = shift;
-		my $newline = "";
-		if ($input =~ /\n/) {
-			$newline = "\n";
-		}
-		chomp $input;
-
-		my ($whitespace) = $input =~ /^(\s*)/;
-		$input =~ s/^\s*//;
-
 		my $output;
 		if ($input eq "!") {
 			$output = build_html;
+		}
+		elsif ($input =~ /^[a-z0-9-_.]+\+/i) {
+			my @siblings = split /\+/, $input;
+			for my $s (@siblings) {
+				$output .= process_input($s);
+			}
 		}
 		else {
 			my $tag = get_tag $input;
@@ -140,8 +139,16 @@ BEGIN {
 			my @classes = get_classes $input;
 			$output = build_element $tag, $content, @classes;
 		}
-		return "$whitespace$output$newline";
+		return $output;
 	}
 }
-print process_input $_;
+my $newline = "";
+$newline = "\n" if /\n/;
+chomp;
+
+my ($whitespace) = $_ =~ /^(\s*)/;
+s/^\s*//;
+
+my $output = process_input $_;
+print "$whitespace$output$newline";
 ' "$@"
