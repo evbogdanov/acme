@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+awk '
+BEGIN {
+	css["f"]="font"
+	css["fz"]="font-size"
+	css["w"]="width"
+	css["h"]="height"
+}
+
+function cssify(line) {
+	i = match(line, "[a-z]")
+	tabs = ""
+	if (i > 1) {
+		n_tabs = i - 1
+		tabs = ""
+		while (n_tabs-- > 0) {
+			tabs = tabs"	"
+		}
+	}
+	gsub("[	 ]", "", line)
+	if (line in css) {
+		return tabs css[line] ": ;"
+	}
+	return tabs "?"
+}
+
+{
+	print cssify($0)
+}
+'

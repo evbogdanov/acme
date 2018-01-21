@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo addr=dot | 9p write acme/$winid/ctl
+echo -n '__MARKER__' | 9p write acme/$winid/data
+echo -n '/^.*__MARKER__/' | 9p write acme/$winid/addr
+echo dot=addr | 9p write acme/$winid/ctl
+in=$(9p read acme/$winid/xdata | sed 's/__MARKER__//')
+out=$(echo "$in" | cssify)
+echo addr=dot | 9p write acme/$winid/ctl
+echo -n "$out" | 9p write acme/$winid/data

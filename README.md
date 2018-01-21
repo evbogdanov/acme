@@ -75,6 +75,7 @@ Who is who in **bin** directory:
 - `b` create an indented C-like block `{ ... }`
 - `c SYMBOL`/`uc SYMBOL` comment/uncomment selection
 - `commit MESSAGE` commit and push to master
+- `css` and `cssify` transform abbreviations into CSS properties
 - `f TEXT` find TEXT using The Silver Searcher
 - `hd SYMBOL` draw a pretty heading
 - `htm` feed selection to [Pug](https://github.com/pugjs/pug)
