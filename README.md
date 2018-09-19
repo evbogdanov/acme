@@ -110,7 +110,7 @@ Put these guys in your **$PATH**.
   - `ctrl-e` move cursor to end of the line
   - `ctrl-i` tab
   - `ctrl-j` enter
-  - `ctrl-f` filepath autocompletion
+  - `ctrl-f` filepath autocompletion (absolute paths only; no variable expansion)
   - `fn-*left arrow*` go home (macOS)
   - `fn-*right arrow*` go end (macOS)
 - search with right click:
