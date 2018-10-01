@@ -172,6 +172,20 @@ Edit ,x/Acme/ {
 - `page FILE` view graphics files
 - `web URL` open url in your browser
 
+## Wanna use bash inside win?
+
+Put in your .bashrc
+```
+## If inside Acme...
+if [ "$winid" ]; then
+  ## ... then patch the `cd` command
+  _cd () {
+    \cd "$@" && awd
+  }
+  alias cd=_cd
+fi
+```
+
 ## Resources
 
 - [Acme homepage](http://acme.cat-v.org/)
