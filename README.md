@@ -192,7 +192,7 @@ fi
 - [A Tour of the Acme Editor](http://www.youtube.com/watch?v=dP1xVpMPn8M)
 - [Plan 9 Acme Intro](http://www.youtube.com/watch?v=dopu3ZtdCsg)
 - [On using Acme as a day-to-day text editor](http://jlouisramblings.blogspot.ru/2013/04/acme-as-editor_20.html)
-- [Let’s Try Acme](http://echosa.github.io/blog/categories/acme/)
+- [Let’s Try Acme](http://echosa.net/tags/#acme)
 - [Plan 9 configuration](https://github.com/jlouis/plan9-setup)
 - [Extensibility in the Acme text editor](http://www.mostlymaths.net/2013/03/extensibility-programming-acme-text-editor.html)
 - [Plan 9 from User Space](https://github.com/9fans/plan9port)
